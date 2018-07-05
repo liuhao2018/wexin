@@ -3,7 +3,10 @@ package com.liuhao.weixin.model;
 public class AccessToken {
 
     private String access_token;
-    private long expire_in;
+    private int expires_in;
+
+    public AccessToken() {
+    }
 
     public String getAccess_token() {
         return access_token;
@@ -13,23 +16,19 @@ public class AccessToken {
         this.access_token = access_token;
     }
 
-    public long getExpire_in() {
-        return expire_in;
+    public int getExpires_in() {
+        return expires_in;
     }
 
-    public void setExpire_in(long expire_in) {
-        this.expire_in = expire_in;
-    }
-
-    public AccessToken() {
-
+    public void setExpires_in(int expires_in) {
+        this.expires_in = expires_in;
     }
 
     @Override
     public String toString() {
         return "AccessToken{" +
                 "access_token='" + access_token + '\'' +
-                ", expire_in=" + expire_in +
+                ", expires_in=" + expires_in +
                 '}';
     }
 }

@@ -29,11 +29,12 @@ public class AccessTokenService {
 
     @Scheduled(fixedRate = 7200 * 1000)
     public void refreshToken() {
-        AccessToken accessToken = restTemplate.getForObject(accessTokenUrl, AccessToken.class,accessTokenRequest);
+        AccessToken accessToken = restTemplate.getForObject(accessTokenUrl,
+                AccessToken.class,accessTokenRequest.getGrant_type(),
+                accessTokenRequest.getAppid(),accessTokenRequest.getSecret());
         if (accessToken != null) {
             stringRedisTemplate.boundValueOps("access_token").set(accessToken.getAccess_token());
             stringRedisTemplate.expire("access_token",7200 * 1000, TimeUnit.MILLISECONDS);
         }
     }
-
 }

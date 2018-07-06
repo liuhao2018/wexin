@@ -1,6 +1,9 @@
 package com.liuhao.weixin.controller;
 
 import com.liuhao.weixin.model.WeixinMessage;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -8,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class WeixinController {
 
-    @RequestMapping(produces = "application/xml;charset=UTF-8")
-    public WeixinMessage responseMessage(WeixinMessage weixinMessage) {
+    @PostMapping(produces = MediaType.APPLICATION_XML_VALUE)
+    public WeixinMessage responseMessage(@RequestBody WeixinMessage weixinMessage) {
         WeixinMessage response = new WeixinMessage();
         if ("text".equals(weixinMessage.getMsgType())) {
             response.setToUserName(weixinMessage.getFromUserName());

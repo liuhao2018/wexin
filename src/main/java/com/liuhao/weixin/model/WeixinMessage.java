@@ -1,10 +1,24 @@
 package com.liuhao.weixin.model;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
+@JacksonXmlRootElement(localName = "xml")
 public class WeixinMessage {
+
+    @JacksonXmlProperty(localName = "ToUserName")
     private String ToUserName;
+
+    @JacksonXmlProperty(localName = "FromUserName")
     private String FromUserName;
-    private long createTime;
+
+    @JacksonXmlProperty(localName = "CreateTime")
+    private long CreateTime;
+
+    @JacksonXmlProperty(localName = "MsgType")
     private String MsgType;
+
+    @JacksonXmlProperty (localName = "Content")
     private String Content;
 
     public WeixinMessage() {
@@ -27,11 +41,11 @@ public class WeixinMessage {
     }
 
     public long getCreateTime() {
-        return createTime;
+        return CreateTime;
     }
 
     public void setCreateTime(long createTime) {
-        this.createTime = createTime;
+        this.CreateTime = createTime;
     }
 
     public String getMsgType() {
@@ -55,7 +69,7 @@ public class WeixinMessage {
         return "WeixinMessage{" +
                 "ToUserName='" + ToUserName + '\'' +
                 ", FromUserName='" + FromUserName + '\'' +
-                ", createTime=" + createTime +
+                ", createTime=" + CreateTime +
                 ", MsgType='" + MsgType + '\'' +
                 ", Content='" + Content + '\'' +
                 '}';
